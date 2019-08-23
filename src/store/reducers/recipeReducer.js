@@ -1,5 +1,5 @@
 const initState = {
-  test: ''
+  recipes: []
 }
 
 const recipeReducer = (state = initState, action) => {

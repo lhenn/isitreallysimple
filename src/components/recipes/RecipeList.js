@@ -1,5 +1,6 @@
 import React from 'react'
 import RecipeSummary from './RecipeSummary'
+import {Link} from 'react-router-dom'
 
 const RecipeList = ({recipes}) => {
   console.log(recipes);
@@ -9,7 +10,9 @@ const RecipeList = ({recipes}) => {
       {recipes && recipes.map(recipe => {
         return (
           <div key={recipe.id}>
-            <RecipeSummary recipe={recipe}/>
+            <Link to={'/recipe/' + recipe.id}>
+              <RecipeSummary recipe={recipe}/>
+            </Link>
           </div>
         )
       })}

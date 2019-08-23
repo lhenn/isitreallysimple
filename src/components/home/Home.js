@@ -9,7 +9,7 @@ class Home extends Component {
   render() {
     console.log(this.props.recipes);
     return(
-      <div>this is the home component
+      <div>
         <RecipeList recipes={this.props.recipes}/>
       </div>
     )
