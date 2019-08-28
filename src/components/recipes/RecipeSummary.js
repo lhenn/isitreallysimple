@@ -1,19 +1,28 @@
 import React from 'react'
+import {Card, Badge} from 'react-bootstrap'
+import SimpleCategories from './SimpleCategories'
+import SimpleRatings from './SimpleRatings'
+import TasteRatings from './TasteRatings'
+
 
 const RecipeSummary = ({recipe}) => {
-  const simpleCats = recipe.simpleCategories.map(cat => {
-    return (
-      <span key={cat}>
-        {cat}
-      </span>
-    )
-  })
   return (
-    <div className="card">
-      <div>{recipe.title}</div>
-      <div>{recipe.mealType}</div>
-      <div>{simpleCats}</div>
-    </div>
+    <Card style={{width:'auto'}}>
+      <Card.Body>
+        <Card.Title>{recipe.title}</Card.Title>
+        <div className='recipe-summary-container'>
+          <div className='recipe-summary-info'>
+            <Card.Text>{recipe.mealType}</Card.Text>
+            <SimpleCategories categories={recipe.simpleCategories}/>
+          </div>
+          <div className='recipe-summary-ratings'>
+            <SimpleRatings/>
+            <TasteRatings/>
+          </div>
+        </div>
+      </Card.Body>
+
+    </Card>
   )
 
 }

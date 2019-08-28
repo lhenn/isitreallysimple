@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
 import { signUp } from '../../store/actions/authActions'
+import {Form, FormControl, InputGroup, Button, Alert} from 'react-bootstrap'
 
 class SignUp extends Component {
   state = {
@@ -22,26 +23,31 @@ class SignUp extends Component {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/' />
     return(
-      <div className="container">
-        <h5>Sign Up!</h5>
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-field">
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" onChange={this.handleChange}/>
+      <div className='container'>
+        <h4>Sign Up!</h4>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="username">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" placeholder="Username" onChange={this.handleChange} />
+            <Form.Text className='text-muted'>What will appear when you post.</Form.Text>
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Email" onChange={this.handleChange} />
+            <Form.Text className='text-muted'>What you will use to sign in.</Form.Text>
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" onChange={this.handleChange}/>
+            <Form.Text className='text-muted'>6 or more characters, please.</Form.Text>
+          </Form.Group>
+          <div>
+            {authError ? <Alert variant='danger'>{ authError }</Alert>: null }
           </div>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange}/>
-          </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange}/>
-          </div>
-          <div className="input-field">
-            <button className="btn z-depth-0">Log in</button>
-          </div>
-        </form>
-
+          <Button variant="primary" type="submit">
+            Log in
+          </Button>
+        </Form>
       </div>
     )
   }

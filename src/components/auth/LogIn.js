@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
 import { logIn } from '../../store/actions/authActions'
-import {InputGroup, FormControl} from 'react-bootstrap'
+import {Form, FormControl, InputGroup, Button} from 'react-bootstrap'
 
 class LogIn extends Component {
   state = {
@@ -19,30 +19,23 @@ class LogIn extends Component {
     this.props.logIn(this.state);
   }
   render() {
-    console.log(this.state);
-    if(this.props.auth.uid) return <Redirect to='/' />
+    if(this.props.auth.uid) return <Redirect to='/'/>
     return(
       <div className='container'>
         <h4>Log in</h4>
-        <form onSubmit={this.handleSubmit}>
-          <InputGroup className="mb-3">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange}/>
-            <FormControl
-              placeholder="Email"
-              aria-label="Email"
-              aria-describedby="basic-addon1"
-              onChange={this.handleChange}
-              />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange}/>
-          </InputGroup>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
-          </div>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Email" onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" onChange={this.handleChange}/>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Log in
+          </Button>
+        </Form>
       </div>
     )
   }

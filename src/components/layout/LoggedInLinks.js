@@ -1,15 +1,38 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React from 'react'
+import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logOut } from '../../store/actions/authActions'
+import {Navbar, Nav, Button, OverlayTrigger, Popover} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+const popover = (
+  <Popover id="popover-basic">
+   <Popover.Content>
+     <Button variant="outline-dark" onClick={logOut}>Logout</Button>
+   </Popover.Content>
+ </Popover>
+)
 
 const LoggedInLinks = ({profile, logOut}) => {
   return (
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item"><NavLink to='/about' className="nav-link">About</NavLink></li>
-      <li className="nav-item"><button className="nav-link btn" onClick={logOut}>Log Out</button></li>
-      <li className="nav-item"><NavLink to='/' className="nav-link">{profile.username}</NavLink></li>
-    </ul>
+  
+    <Nav>
+      <OverlayTrigger
+        trigger="click"
+        placement="bottom"
+        overlay={popover}
+      >
+          <Button
+            inline="true"
+            className="mr-sm-2"
+          >
+            <FontAwesomeIcon icon={faStroopwafel} />
+            <div className="profile-container">{profile.username}</div>
+          </Button>
+      </OverlayTrigger>
+    </Nav>
+
   )
 }
 
@@ -18,5 +41,6 @@ const mapDispatchToProps = (dispatch) => {
     logOut: () => dispatch(logOut())
   }
 }
+
 
 export default connect(null, mapDispatchToProps)(LoggedInLinks);
