@@ -7,8 +7,8 @@ const LoggedOutLinks = () => {
 
 
     <Nav>
-      <Nav.Link href='/login' className="text-body">Log In</Nav.Link>
-      <Nav.Link href='/signup' className="text-body">Sign Up</Nav.Link>
+      <Nav.Link as={NavLink} to='/login' className="text-body">Log In</Nav.Link>
+      <Nav.Link as={NavLink} to='/signup' className="text-body">Sign Up</Nav.Link>
     </Nav>
     
   )

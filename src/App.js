@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navigation from './components/layout/Navigation'
 import Home from './components/home/Home'
@@ -7,6 +7,7 @@ import SignUp from './components/auth/SignUp'
 import About from './components/About'
 import Recipes from './components/recipes/Recipes'
 import RecipeDetails from './components/recipes/RecipeDetails'
+import CreateReview from './components/recipes/CreateReview'
 import './App.css';
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path='/recipe/:id' component={RecipeDetails} />
             <Route path='/login' component={LogIn} />
             <Route path='/signup' component={SignUp} />
+            <Route path='/createReview' component={CreateReview}/>
           </Switch>
         </div>
       </BrowserRouter>

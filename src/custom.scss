@@ -45,7 +45,60 @@ $link-hover-decoration: underline !default;
     padding-left:3rem;
   }
 }
-
+.simpleCategory {
+  color:white;
+  margin:.2em;
+  border-radius: 15em;
+  width:1.6em;
+  font-size:75%;
+  &.S{
+    border-color: orange;
+    color: black;
+    &.active{
+      background-color: orange;
+      color: white;
+    }
+  }
+  &.I{
+    border-color: yellow;
+    color: black;
+    &.active{
+      background-color: yellow;
+      color:white;
+    }
+  }
+  &.M{
+    border-color: green;
+    color: black;
+    &.active{
+      background-color: green;
+      color: white;
+    }
+  }
+  &.P{
+    border-color:blue;
+    color:black;
+    &.active{
+      background-color: blue;
+      color:white;
+    }
+  }
+  &.L{
+    border-color:teal;
+    color:black;
+    &.active{
+      background-color: teal;
+      color:white;
+    }
+  }
+  &.E{
+    border-color: red;
+    color:black;
+    &.active{
+      background-color: red;
+    }
+  }
+}
 .badge-simpleCategory {
   color:white;
   margin:.2em;
