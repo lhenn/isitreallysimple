@@ -11,13 +11,13 @@ const About = () => {
       delicious, primarily middle-eastern recipes.
       </p>
       <p>
-      In fact, it was while following his recipes in <span className="italic"> Jerusalem </span> (2012) that my boyfriend
-      and I started dating, then fell in love, and now find ourselves still cooking his recipes together 5 years later.
+      Most would agree that Ottolenghi's recipes are delicious, but few would call his recipes easy or convenient. Often
+      they require hard-to-find ingredients, much planning ahead, or laborious tasks such as hand-picking thyme leaves or peeling tomatoes.
+      In his cookbook Simple (2018), Ottolenghi attempts to present recipes that are, in some form, simple. This platform has been
+      built to judge if he has succeeded or not on a recipe by recipe basis. Collectively we are asking the question: 
+      <span className="italic"> really</span>??
       </p>
-      <p>
-      This might seem romantic, but the truth of the matter is that during our third date, when we were cooking (insert lamb pistachio dish here)
-       
-      </p>
+
 
 
       <iframe src="https://giphy.com/embed/QzSiPlYf3PYVa" width="480" height="270" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>

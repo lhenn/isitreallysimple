@@ -11,7 +11,7 @@ const LoggedInLinks = ({profile, logOut}) => {
   return (
     <Nav>
       
-      <NavDropdown title={profile.username}>
+      <NavDropdown alignRight title={profile.username}>
         <NavDropdown.Item onClick={logOut}>Log out</NavDropdown.Item>
       </NavDropdown>
     </Nav>
