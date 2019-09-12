@@ -3,9 +3,13 @@ import {Card, Badge} from 'react-bootstrap'
 import SimpleCategories from './SimpleCategories'
 import SimpleRatings from './SimpleRatings'
 import TasteRatings from './TasteRatings'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import {connect} from 'react-redux'
 
 
 const RecipeSummary = ({recipe}) => {
+  console.log({recipe})
   return (
     <Card style={{width:'auto'}}>
       <Card.Body>
@@ -27,4 +31,8 @@ const RecipeSummary = ({recipe}) => {
 
 }
 
-export default RecipeSummary;
+
+export default RecipeSummary
+
+
+

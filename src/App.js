@@ -7,7 +7,7 @@ import SignUp from './components/auth/SignUp'
 import About from './components/About'
 import Recipes from './components/recipes/Recipes'
 import RecipeDetails from './components/recipes/RecipeDetails'
-import CreateReview from './components/recipes/CreateReview'
+import CreateRecipeWithReview from './components/recipes/CreateRecipeWithReview'
 import './App.css';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
             <Route path='/recipe/:id' component={RecipeDetails} />
             <Route path='/login' component={LogIn} />
             <Route path='/signup' component={SignUp} />
-            <Route path='/createReview' component={CreateReview}/>
+            <Route path='/createReview' component={CreateRecipeWithReview}/>
           </Switch>
         </div>
       </BrowserRouter>
