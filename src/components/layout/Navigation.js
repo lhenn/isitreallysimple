@@ -17,7 +17,7 @@ const Navigation = ({profile, auth}) => {
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to='/about' className="text-body">About</Nav.Link>
           <Nav.Link as={NavLink} to='/recipes' className="text-body">Browse recipes</Nav.Link>
-          <Nav.Link as={NavLink} to="/createReview" className="text-body">Review a recipe</Nav.Link>
+          <Nav.Link as={NavLink} to="/reviewRecipe" className="text-body">Review a recipe</Nav.Link>
         </Nav>
         {links}
         </Navbar.Collapse>

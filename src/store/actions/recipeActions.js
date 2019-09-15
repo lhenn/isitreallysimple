@@ -32,6 +32,29 @@ export const createRecipeWithReview = recipe => {
   };
 };
 
+export const createRecipe = recipe => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+
+    firestore
+      .collection("recipes")
+      .add({
+        title: recipe.title,
+        mealType: recipe.mealType,
+        simpleCategories: recipe.simpleCategories,
+      })
+      .then(() => {
+        dispatch({ type: "CREATE_RECIPE", recipes: recipe });
+      })
+      .catch(err => {
+        dispatch({ type: "CREATE_RECIPE_ERROR", err });
+      });
+  };
+};
+
 export const createReview = review => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { createReview } from "../../store/actions/recipeActions";
+import { createReview } from "../../../store/actions/recipeActions";
 import { Redirect } from "react-router-dom";
 
 class CreateReview extends Component {
@@ -32,10 +32,10 @@ class CreateReview extends Component {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to="/login" />;
 
-    const mealTypes = require("./RecipeData").mealTypes;
-    const simpleCategories = require("./RecipeData").simpleCategories;
-    const simpleRatings = require("./RecipeData").simpleRatings;
-    const tasteRatings = require("./RecipeData").tasteRatings;
+    const mealTypes = require("../RecipeData").mealTypes;
+    const simpleCategories = require("../RecipeData").simpleCategories;
+    const simpleRatings = require("../RecipeData").simpleRatings;
+    const tasteRatings = require("../RecipeData").tasteRatings;
     console.log("auth", auth);
 
     return (

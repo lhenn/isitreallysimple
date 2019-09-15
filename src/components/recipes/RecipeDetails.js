@@ -4,7 +4,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import ReviewDetails from "./ReviewDetails"
 import { Container, Accordion, Card, Button, Form, Col, Row } from "react-bootstrap"
-import CreateReview from './CreateReview'
+import CreateReview from './reviews/CreateReview'
 
 const RecipeDetails = ({recipe, recipeID}) => {
 

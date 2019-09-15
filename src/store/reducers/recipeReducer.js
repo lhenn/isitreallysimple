@@ -8,6 +8,10 @@ const recipeReducer = (state = initState, action) => {
       return state;
     case 'CREATE_RECIPEWITHREVIEW_ERROR':
       return state;
+    case 'CREATE_RECIPE':
+      return state;
+    case 'CREATE_RECIPE_ERROR':
+      return state;
     case 'CREATE_REVIEW':
       return state;
     case 'CREATE_REVIEW_ERROR':
