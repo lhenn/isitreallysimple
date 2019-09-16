@@ -3,10 +3,25 @@ const simpleCategories = ['S', 'I', 'M', 'P', 'L', 'E'];
 const simpleRatings = ['simple', 'not simple']
 const tasteRatings = [0, 1, 2, 3, 4, 5]
 
+const averageTasteRatings = (tasteRatings) => {
+    if(tasteRatings != null) return (tasteRatings.reduce((a, b) => (parseInt(a) + parseInt(b)) / tasteRatings.length));
+    return 0;
+}
+const countSimpleRatings = (simpleRatings) => {
+    if(simpleRatings != null)
+        return ({
+            simple: simpleRatings.filter(s => s === 'simple').length,
+            notSimple: simpleRatings.filter(s => s === 'not simple').length
+        })      
+    return 0;
+}
+
 
 module.exports = {
     mealTypes: mealTypes,
     simpleCategories: simpleCategories,
     tasteRatings: tasteRatings,
     simpleRatings: simpleRatings,
+    averageTasteRatings: averageTasteRatings,
+    countSimpleRatings: countSimpleRatings
 }

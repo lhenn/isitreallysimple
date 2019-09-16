@@ -27,8 +27,8 @@ const RecipeDetails = ({recipe, recipeID}) => {
           </Card>
         </Accordion>
 
-        {recipe.reviews.map(review => {
-          return <ReviewDetails key={review.authorID} review={review} />;
+        {recipe.reviews.map((review, index) => {
+          return <ReviewDetails key={index} review={review} />;
         })}
       </Container>
     );

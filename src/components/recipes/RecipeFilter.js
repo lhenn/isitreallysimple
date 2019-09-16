@@ -14,35 +14,34 @@ const RecipeFilter = ({onChangeFilterData, onSubmit}) => {
   }
   
   const mealTypes = ['All','Pudding', 'Meat', 'Rice, Grains, and Pulses', 'Noodles and Pasta'];
+  const simpleCategories = require('./RecipeData').simpleCategories;
   return(
-    <div>
-    <h5>Filter Recipes</h5>
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="filter.mealType">
-        <Form.Label>Meal Type</Form.Label>
-        <Form.Control as='select' name="selectedMealType" onChange={handleChange}>
-          {mealTypes.map(m => {
-            return( <option key={m} value={m}>{m}</option>)
-          })}
-        </Form.Control>
+      <h5>Sort</h5>
+      <Form.Group>
+          <Button>Simplest recipes</Button>
+          <Button>Tastiest recipes</Button>
       </Form.Group>
-      <Form.Group/>
-        <Form.Check inline label="most simple" type='radio' name="sortBySimple" id='mostSimple' value="mostSimple" onClick={handleChange}/>
-        <Form.Check inline label="least simple" type='radio' name="sortBySimple" id='leastSimple' value="leastSimple" onClick={handleChange}/>
-      <Form.Group/>
-      <Form.Group/>
-        <Form.Check inline label="most tasty" type='radio' name='sortByTaste' id='mostTasty' value="mostTasty" onClick={handleChange} />
-        <Form.Check inline label="least tasty" type='radio' name='sortByTaste' id='leastTasty' value="leastTasty" onClick={handleChange} />
-      <Form.Group/>
+      <h5>Filter</h5>
+      <Form.Group>
+        <Form.Label>Meal type</Form.Label>
+          {mealTypes.map(m => {
+            return( <Button key={m} value={m}>{m}</Button>)
+          })}
+      </Form.Group>
+      <Form.Group >
+        <Form.Label>Simple categories</Form.Label>
+        
+          {simpleCategories.map(s => {
+            return( <Button>{s}</Button>)
+          })}
+
+      </Form.Group>
       <Button variant="primary" type="submit">
           Find Recipes
       </Button>
     </Form>
-    </div>
-
-
   )
-  
 
 }
 

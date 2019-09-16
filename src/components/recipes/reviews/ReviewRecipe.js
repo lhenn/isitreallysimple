@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Prompt from '../Prompt'
 import SearchRecipe from '../SearchRecipe'
-import CreateRecipe from './CreateRecipe'
-import CreateReview from './CreateReview'
+import CreateRecipeWithReview from './CreateRecipeWithReview'
 
 
 
@@ -16,10 +15,15 @@ class ReviewRecipe extends Component {
             stage:'initial'
         });
     }
-    handleChange = (stage, title) => {
+    handleNoResults = (title) => {
         this.setState({
-            stage: stage,
-            title: title
+            title:title,
+            stage: 'create-recipe-review'
+        })
+    }
+    handleReviewSubmit = (stage, title) => {
+        this.setState({
+            stage: 'final'
         });
     }
     render() {
@@ -28,22 +32,15 @@ class ReviewRecipe extends Component {
                 return (
                     <>
                     <Prompt message="Check if the recipe you want to review already exists." />
-                    <SearchRecipe onStageChange={this.handleChange} />
+                    <SearchRecipe onNoResults={this.handleNoResults} />
                     </>
 
                 );
-            case 'create-recipe':
+            case 'create-recipe-review':
                 return  (
                     <>
                     <Prompt message="No one has reviewed this recipe yet! Do us a favor and add the recipe information in, exactly as it is in the book." />
-                    <CreateRecipe onStageChange={this.handleChange} title={this.state.title}/>
-                    </>
-                )
-            case 'create-review':
-                return  (
-                    <>
-                    <Prompt message="Recipe added. Now give us your take on it." />
-                    <CreateReview onStageChange={this.handleChange}/>
+                    <CreateRecipeWithReview onReviewSubmit={this.handleReviewSubmit} title={this.state.title}/>
                     </>
                 )
             case 'final':

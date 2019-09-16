@@ -1,8 +1,9 @@
 import React from 'react'
 
-const TasteRatings = () => {
+const TasteRatings = ({tasteRatings}) => {
+  const averageTasteRatings = require("./RecipeData").averageTasteRatings;
   return (
-    <div>&#128069; (*/5)</div>
+    <div>&#128069; {averageTasteRatings(tasteRatings)}/5</div>
   )
 }
 

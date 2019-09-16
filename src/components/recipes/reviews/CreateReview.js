@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { connect } from "react-redux";
-import { createReview } from "../../../store/actions/recipeActions";
-import { Redirect } from "react-router-dom";
+import React, { Component } from "react"
+import { Container, Form, Row, Col, Button, Accordion } from "react-bootstrap"
+import { connect } from "react-redux"
+import { createReview } from "../../../store/actions/recipeActions"
+import { Redirect } from "react-router-dom"
+
 
 class CreateReview extends Component {
   state = {
@@ -12,10 +13,12 @@ class CreateReview extends Component {
     recipeID: null
   };
   componentDidMount() {
+    console.log(this.props.recipe, this.props.recipeID);
     this.setState({
       recipeID: this.props.recipeID
     });
   }
+  
   handleChange = e => {
     console.log(this.state);
     this.setState({
@@ -25,7 +28,6 @@ class CreateReview extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createReview(this.state);
-
   };
   render() {
     console.log(this.state);
@@ -86,10 +88,9 @@ class CreateReview extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-        
-        <Button variant="primary" type="submit">
+        <Accordion.Toggle as={Button} eventKey="0" type="submit">
           Post Review
-        </Button>
+        </Accordion.Toggle>
       </Form>
     );
   }
@@ -97,7 +98,7 @@ class CreateReview extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
 
@@ -107,7 +108,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateReview);
+export default 
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ) (CreateReview);

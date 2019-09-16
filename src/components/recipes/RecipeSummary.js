@@ -3,9 +3,6 @@ import {Card, Badge} from 'react-bootstrap'
 import SimpleCategories from './SimpleCategories'
 import SimpleRatings from './SimpleRatings'
 import TasteRatings from './TasteRatings'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
-import {connect} from 'react-redux'
 
 
 const RecipeSummary = ({recipe}) => {
@@ -20,8 +17,8 @@ const RecipeSummary = ({recipe}) => {
             <SimpleCategories categories={recipe.simpleCategories}/>
           </div>
           <div className='recipe-summary-ratings'>
-            <SimpleRatings/>
-            <TasteRatings/>
+            <SimpleRatings simpleRatings={recipe.reviews ? recipe.reviews.map(r => r.simpleRating) : null}/>
+            <TasteRatings tasteRatings={recipe.reviews ? recipe.reviews.map(r => r.tasteRating) : null}/>
           </div>
         </div>
       </Card.Body>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { createRecipeWithReview } from "../../store/actions/recipeActions";
+import { createRecipeWithReview } from "../../../store/actions/recipeActions";
 import { Redirect } from "react-router-dom";
 
 class CreateRecipeWithReview extends Component {
@@ -13,6 +13,11 @@ class CreateRecipeWithReview extends Component {
     tasteRating: null,
     comments: ""
   };
+  componentDidMount() {
+    this.setState({
+      title:this.props.title
+    })
+  }
   handleChange = e => {
     console.log(this.state);
     this.setState({
@@ -33,16 +38,16 @@ class CreateRecipeWithReview extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createRecipeWithReview(this.state);
-    this.props.history.push('/');
+    this.props.onReviewSubmit();
   };
   render() {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to="/login" />;
 
-    const mealTypes = require("./RecipeData").mealTypes;
-    const simpleCategories = require("./RecipeData").simpleCategories;
-    const simpleRatings = require("./RecipeData").simpleRatings;
-    const tasteRatings = require("./RecipeData").tasteRatings;
+    const mealTypes = require("../RecipeData").mealTypes;
+    const simpleCategories = require("../RecipeData").simpleCategories;
+    const simpleRatings = require("../RecipeData").simpleRatings;
+    const tasteRatings = require("../RecipeData").tasteRatings;
     console.log("auth", auth);
 
     return (
@@ -59,6 +64,8 @@ class CreateRecipeWithReview extends Component {
                 type="text"
                 name="title"
                 onChange={this.handleChange}
+                value={this.props.title}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -68,6 +75,7 @@ class CreateRecipeWithReview extends Component {
                 as="select"
                 name="mealType"
                 onChange={this.handleChange}
+                required
               >
                 {mealTypes.map(m => {
                   return (
@@ -126,6 +134,7 @@ class CreateRecipeWithReview extends Component {
                 as="select"
                 name="tasteRating"
                 onChange={this.handleChange}
+                required
               >
                 {tasteRatings.map(r => {
                   return (

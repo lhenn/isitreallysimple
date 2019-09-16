@@ -19,7 +19,7 @@ class SearchRecipe extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const result = this.props.recipes.find(r => r.title === this.state.title);
-        if (result == undefined) this.props.onStageChange('create-recipe', this.state.title);
+        if (result === undefined) this.props.onNoResults(this.state.title);
         else this.setState({
             recipe: result,
             recipeFound: true
