@@ -13,7 +13,7 @@ const RecipeFilter = ({onChangeFilterData, onSubmit}) => {
     onSubmit();
   }
   
-  const mealTypes = ['All','Pudding', 'Meat', 'Rice, Grains, and Pulses', 'Noodles and Pasta'];
+  const mealTypes = require('./RecipeData').mealTypes;
   const simpleCategories = require('./RecipeData').simpleCategories;
   return(
     <Form onSubmit={handleSubmit}>
@@ -26,7 +26,7 @@ const RecipeFilter = ({onChangeFilterData, onSubmit}) => {
       <Form.Group>
         <Form.Label>Meal type</Form.Label>
           {mealTypes.map(m => {
-            return( <Button key={m} value={m}>{m}</Button>)
+            return( <Button key={m} name='mealType' value={m} onClick={handleChange}>{m}</Button>)
           })}
       </Form.Group>
       <Form.Group >

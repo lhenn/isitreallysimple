@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import RecipeFilter from './RecipeFilter'
 import RecipeList from './RecipeList'
 import {Container} from 'react-bootstrap'
-import { firestoreConnect } from 'react-redux-firebase'
+import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {connect} from 'react-redux'
 import SearchRecipe from './SearchRecipe'
@@ -12,16 +12,9 @@ import {Accordion, Button, Card} from 'react-bootstrap'
 
 class Recipes extends Component {
   state = {
-    selectedMealType:'',
+    mealType:'',
     sortBySimple:'',
-    sortByTaste:'',
-    filteredRecipes:[]
-  }
-  componentDidMount() {
-    console.log(this.props.recipes)
-    this.setState({
-      filteredRecipes: this.props.recipes
-    });
+    sortByTaste:''
   }
   handleChangeFilterData = (fieldType, fieldValue) => {
     this.setState({
@@ -36,7 +29,7 @@ class Recipes extends Component {
   }
 
   filterRecipes = (recipes) => {
-    return recipes.filter(recipe => recipe.mealType === this.state.selectedMealType)
+    return recipes.filter(recipe => recipe.mealType === this.state.mealType)
   }
 
   handleNoResults = () => {
@@ -47,7 +40,11 @@ class Recipes extends Component {
  
   render() {
     
-    //const recipes = this.state.filteredRecipes.length != 0 ? this.state.filteredRecipes : this.props.recipes;
+    const recipeList = !isLoaded(this.props.recipes)
+      ? 'Loading'
+      : isEmpty(this.props.recipes)
+        ? 'No results found' 
+        : <RecipeList recipes={this.filterRecipes(this.props.recipes)}/>
 
     return (
       <Container>
@@ -67,7 +64,7 @@ class Recipes extends Component {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        <RecipeList recipes={this.props.recipes}/>
+        {recipeList}
       </Container>
     )
   }
