@@ -5,18 +5,31 @@ import { compose } from "redux";
 import ReviewDetails from "./ReviewDetails"
 import { Container, Accordion, Card, Button, Form, Col, Row } from "react-bootstrap"
 import CreateReview from './reviews/CreateReview'
+import RecipeInfo from './summary/RecipeInfo'
+import ReviewInfo from './summary/ReviewInfo'
+import SimpleRatings from './summary/SimpleRatings'
+import TasteRatings from './summary/TasteRatings'
+
 
 const RecipeDetails = ({recipe, recipeID}) => {
 
   if (recipe) {
     return (
       <Container>
-        <h3>{recipe.title}</h3>
+
+        <h3 className="recipe-title details">{recipe.title}</h3>
+        <div className='recipe-summary-container details'>
+          <RecipeInfo recipe={recipe}/>
+          <ReviewInfo recipe={recipe}/>
+        </div>
+
+
+       
         <Accordion>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                Write your review >
+                Review
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
@@ -26,7 +39,6 @@ const RecipeDetails = ({recipe, recipeID}) => {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-
         {recipe.reviews.map((review, index) => {
           return <ReviewDetails key={index} review={review} />;
         })}

@@ -52,7 +52,6 @@ class CreateRecipeWithReview extends Component {
 
     return (
       <Container>
-        <h4>Review a Recipe</h4>
         <Form onSubmit={this.handleSubmit}>
           <Form.Row>
             <h5 as={Col}>Recipe Details</h5>

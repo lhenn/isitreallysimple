@@ -1,11 +1,10 @@
 import React from 'react'
-import RecipeSummary from './RecipeSummary'
+import RecipeSummary from './summary/RecipeSummary'
 import {Link} from 'react-router-dom'
 
 
 
 const RecipeList = ({recipes}) => {
-  console.log(recipes);
   return(
     <div>
       {recipes && recipes.map(recipe => {

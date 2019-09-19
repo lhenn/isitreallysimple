@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, FormControl, Button } from 'react-bootstrap'
+import {Form, FormControl, Button, Row, Col } from 'react-bootstrap'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {connect} from 'react-redux'
@@ -30,8 +30,14 @@ class SearchRecipe extends Component {
         if(this.state.recipeFound) return <Redirect to={`/recipe/${this.state.recipe.id}`}/>
         return (
             <Form inline onSubmit={this.handleSubmit}>
-                <FormControl type="text" placeholder="Recipe title" name="title" onChange={this.handleChange} className="mr-sm-2" />
-                <Button type="submit">Search</Button>
+                <Row>
+                    <Form.Group as={Col}>
+                    <FormControl inline type="text" placeholder="Recipe title" name="title" onChange={this.handleChange} className="mr-sm-2" />
+                    <Button inline type="submit">Search</Button>
+                    </Form.Group>
+                
+                </Row>
+                
             </Form>
             
         )

@@ -15,34 +15,103 @@ $link-hover-color:      darken($link-color, 15%) !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
 
-// ---------------- general ----------------
+
+
+// --------------- general ----------------
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+
+$accent-font:'Noto Serif', serif;
+
+h1,h2,h3,h4,h5{
+  text-align: center;
+  padding:3%;
+}
 .italic{
   font-style: italic;
+}
+.bold{
+  font-weight: bold;
+}
+.card{
+  width:auto;
+  margin: 2% 0;
+  -webkit-box-shadow: 4px 6px 14px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 14px -8px rgba(0,0,0,0.75);
+  box-shadow: 4px 6px 14px -8px rgba(0,0,0,0.75);
+
+}
+
+button.btn-secondary{
+  border: solid 2px black;
+  background-color:white;
+  color:black;
+  &.filter-button{
+    margin:3px;
+  }
 }
 
 // ---------------- navbar----------------
 .profile-container{
   font-size:12px;
 }
+.navbar-brand{
+  font-family:$accent-font;
+}
 
 // ----------------recipes----------------
+.recipe-title{
+  font-family:$accent-font;
+  text-align:left;
+  padding: 2% 0;
+  &.details{
+    text-align:center;
+  }
+}
+// --- filter ----
+#filter-container{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+// --- review ----
+.review-container{
+  display:flex;
+  align-items: center;
+  
+  flex-direction: column;
+}
+// --- summary ----
+.summary-card{
+  width:auto;
+  margin: 2% 0;
+}
+
+
 .recipe-summary-container {
   display:flex;
+  width:auto;
   .recipe-summary-info, .recipe-summary-ratings {
     flex-direction:column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-grow:1;
   }
   .recipe-summary-info {
     width: 15rem;
-    padding-right:3rem;
+    padding-right:2rem;
     border: solid 1px black;
     border-width: 0 1px 0 0;
   }
   .recipe-summary-ratings {
     width: 10rem;
-    padding-left:3rem;
+    padding-left:2rem;
+  }
+ 
+  &.details{
+    justify-content: center;
   }
 }
 .simpleCategory {
@@ -51,6 +120,7 @@ $link-hover-decoration: underline !default;
   border-radius: 15em;
   width:1.6em;
   font-size:75%;
+  text-align: start;
   &.S{
     border-color: orange;
     color: black;
@@ -122,11 +192,14 @@ $link-hover-decoration: underline !default;
   }
 }
 
-.simpleRatings-container {
+.simple-ratings-container {
   display:flex;
+  justify-content: center;
+  
 }
-.simpleRating {
-  margin:5px;
+.simple-rating {
+  margin:2px;
+  flex-wrap:nowrap;
 }
 
 

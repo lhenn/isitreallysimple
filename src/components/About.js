@@ -20,7 +20,7 @@ const About = () => {
 
 
 
-      <iframe src="https://giphy.com/embed/QzSiPlYf3PYVa" width="480" height="270" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+      <iframe src="https://giphy.com/embed/QzSiPlYf3PYVa" width="100%" height="auto" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
     </Container>
   )
 

@@ -1,21 +1,18 @@
 import React from 'react'
 import {Card, Badge} from 'react-bootstrap'
-import SimpleCategories from './SimpleCategories'
 import SimpleRatings from './SimpleRatings'
 import TasteRatings from './TasteRatings'
+import RecipeInfo from './RecipeInfo'
 
 
 const RecipeSummary = ({recipe}) => {
   console.log({recipe})
   return (
-    <Card style={{width:'auto'}}>
+    <Card className="summary-card">
       <Card.Body>
-        <Card.Title>{recipe.title}</Card.Title>
+        <Card.Title className="recipe-title">{recipe.title}</Card.Title>
         <div className='recipe-summary-container'>
-          <div className='recipe-summary-info'>
-            <Card.Text>{recipe.mealType}</Card.Text>
-            <SimpleCategories categories={recipe.simpleCategories}/>
-          </div>
+          <RecipeInfo recipe={recipe}/>
           <div className='recipe-summary-ratings'>
             <SimpleRatings simpleRatings={recipe.reviews ? recipe.reviews.map(r => r.simpleRating) : null}/>
             <TasteRatings tasteRatings={recipe.reviews ? recipe.reviews.map(r => r.tasteRating) : null}/>
