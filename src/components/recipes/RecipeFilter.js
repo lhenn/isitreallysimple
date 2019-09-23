@@ -1,34 +1,51 @@
 import React, { Component } from "react";
-import { Button, Form, Row, Col, FormControl } from "react-bootstrap";
+import {
+  Button,
+  Form,
+  Row,
+  Col,
+  FormControl,
+  ToggleButtonGroup,
+  ToggleButton
+} from "react-bootstrap";
 
-const RecipeFilter = ({ onChangeFilterData, onSubmit }) => {
+const RecipeFilter = ({ onChange }) => {
   const handleChange = e => {
-    onChangeFilterData(e.target.name, e.target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit();
+    onChange(e.target.name, e.target.value);
   };
 
   return (
-    <Form onSubmit={handleSubmit} id="filter-container" as={Row} >
+    <Form id="filter-container" as={Row}>
       <Form.Group as={Col} sm={8}>
         <FormControl
           inline
           type="text"
           placeholder="Search..."
           name="title"
+          onChange={handleChange}
         />
       </Form.Group>
-      <Form.Group inline as={Col} sm={4} >
-        <Button inline variant="secondary" className="filter-button" size="small">
+
+      <ToggleButtonGroup type="radio" name="sortBy" inline as={Col} sm={4}>
+        <ToggleButton
+          name="sortBy"
+          className="filter-button"
+          variant="secondary"
+          value="simplest"
+          onChange={handleChange}
+        >
           Simplest
-        </Button>
-        <Button inline variant="secondary" className="filter-button" size="small">
+        </ToggleButton>
+        <ToggleButton
+          name="sortBy"
+          className="filter-button"
+          variant="secondary"
+          value="tastiest"
+          onChange={handleChange}
+        >
           Tastiest
-        </Button>
-      </Form.Group>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </Form>
   );
 };

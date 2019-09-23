@@ -21,6 +21,8 @@ $link-hover-decoration: underline !default;
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
 
 $accent-font:'Noto Serif', serif;
+$simple:rgb(84, 243, 177);
+$not-simple:rgb(243, 84, 84);
 
 h1,h2,h3,h4,h5{
   text-align: center;
@@ -87,7 +89,24 @@ button.btn-secondary{
   width:auto;
   margin: 2% 0;
 }
-
+.simple-icon-background, .not-simple-icon-background{
+  
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height:40px;
+  padding: 5px;
+  border-radius:20px;
+  border:solid 2px grey;
+  margin:3px;
+}
+.simple-icon-background {
+  border-color:$simple;
+}
+.not-simple-icon-background {
+  border-color:$not-simple;
+}
 
 .recipe-summary-container {
   display:flex;

@@ -6,7 +6,6 @@ import RecipeInfo from './RecipeInfo'
 
 
 const RecipeSummary = ({recipe}) => {
-  console.log({recipe})
   return (
     <Card className="summary-card">
       <Card.Body>

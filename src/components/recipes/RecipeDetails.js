@@ -9,6 +9,7 @@ import RecipeInfo from './summary/RecipeInfo'
 import ReviewInfo from './summary/ReviewInfo'
 import SimpleRatings from './summary/SimpleRatings'
 import TasteRatings from './summary/TasteRatings'
+import ReviewModal from './reviews/ReviewModal'
 
 
 const RecipeDetails = ({recipe, recipeID}) => {
@@ -23,22 +24,8 @@ const RecipeDetails = ({recipe, recipeID}) => {
           <ReviewInfo recipe={recipe}/>
         </div>
 
-
+      <ReviewModal recipe={recipe} recipeID={recipeID}/>
        
-        <Accordion>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                Review
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                <CreateReview recipe={recipe} recipeID={recipeID}/>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
         {recipe.reviews.map((review, index) => {
           return <ReviewDetails key={index} review={review} />;
         })}

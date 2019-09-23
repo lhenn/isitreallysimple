@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Prompt from '../Prompt'
 import SearchRecipe from '../SearchRecipe'
 import CreateRecipeWithReview from './CreateRecipeWithReview'
+import { createRecipeWithReview } from "../../../store/actions/recipeActions"
+import { connect } from "react-redux"
 
 
 
@@ -21,7 +23,8 @@ class ReviewRecipeContent extends Component {
             stage: 'create-recipe-review'
         })
     }
-    handleReviewSubmit = (stage, title) => {
+    handleReviewSubmit = (recipe) => {
+        this.props.createRecipeWithReview(recipe)
         this.setState({
             stage: 'final'
         });
@@ -54,5 +57,14 @@ class ReviewRecipeContent extends Component {
         
     }
 }
-
-export default ReviewRecipeContent
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      createRecipeWithReview: recipe => dispatch(createRecipeWithReview(recipe))
+    };
+  };
+  
+  export default connect(
+    null,
+    mapDispatchToProps
+  )(ReviewRecipeContent);
