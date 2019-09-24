@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SearchRecipeInput from './SearchRecipeInput'
 import {
   Button,
   Form,
@@ -17,13 +18,7 @@ const RecipeFilter = ({ onChange }) => {
   return (
     <Form id="filter-container" as={Row}>
       <Form.Group as={Col} sm={8}>
-        <FormControl
-          inline
-          type="text"
-          placeholder="Search..."
-          name="title"
-          onChange={handleChange}
-        />
+        <SearchRecipeInput onChange={handleChange}/>
       </Form.Group>
 
       <ToggleButtonGroup type="radio" name="sortBy" inline as={Col} sm={4}>

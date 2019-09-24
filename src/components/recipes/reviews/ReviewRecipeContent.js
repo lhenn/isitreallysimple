@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import Prompt from '../Prompt'
 import SearchRecipe from '../SearchRecipe'
+import SearchRecipeInput from '../SearchRecipeInput';
+import RecipeList from '../RecipeList'
 import CreateRecipeWithReview from './CreateRecipeWithReview'
 import { createRecipeWithReview } from "../../../store/actions/recipeActions"
 import { connect } from "react-redux"
+import { firestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
+import { compose } from "redux";
+import { Button} from 'react-bootstrap'
+import { Redirect} from 'react-router-dom';
 
 
 
@@ -17,10 +23,20 @@ class ReviewRecipeContent extends Component {
             stage:'initial'
         });
     }
-    handleNoResults = (title) => {
+    handleTitleSearch = e => {
         this.setState({
-            title:title,
-            stage: 'create-recipe-review'
+            title: e.target.value
+        })
+    }
+    filterByTitle = recipes => {
+        if(this.state.title !== '') {
+            let titleInput = new RegExp(this.state.title, "i");
+            return recipes.filter(recipe => titleInput.test(recipe.title));
+        }
+      }
+    handleNoResults = () => {
+        this.setState({
+            stage:'create-recipe-review'
         })
     }
     handleReviewSubmit = (recipe) => {
@@ -30,12 +46,26 @@ class ReviewRecipeContent extends Component {
         });
     }
     render() {
+        const { auth } = this.props.auth;
+
+        if( !this.props.auth.uid) return <Redirect to='/login' />
+        const recipeList = !isLoaded(this.props.recipes) ? (
+            "Loading"
+          ) :  (
+            <>
+            <RecipeList recipes={this.filterByTitle(this.props.recipes)} />
+            <div>Not finding what you're looking for?
+            <Button onClick={this.handleNoResults}> Continue ></Button>
+            </div>
+            </>
+          );
         switch(this.state.stage) {
             case 'initial' :
                 return (
                     <>
-                    <Prompt message="Check if the recipe you want to review already exists." />
-                    <SearchRecipe onNoResults={this.handleNoResults} />
+                    <Prompt message="Thank you for contributing to the mission! Let's start by checking if the recipe you want to review already exists here." />
+                    <SearchRecipeInput onChange={this.handleTitleSearch}/>
+                    {recipeList}
                     </>
 
                 );
@@ -57,14 +87,20 @@ class ReviewRecipeContent extends Component {
         
     }
 }
-  
+const mapStateToProps = state => {
+    return {
+      recipes: state.firestore.ordered.recipes,
+      auth: state.firebase.auth
+    };
+  };
+
   const mapDispatchToProps = dispatch => {
     return {
       createRecipeWithReview: recipe => dispatch(createRecipeWithReview(recipe))
     };
   };
   
-  export default connect(
-    null,
-    mapDispatchToProps
-  )(ReviewRecipeContent);
+  export default compose(
+    connect(mapStateToProps, mapDispatchToProps), 
+    firestoreConnect([{ collection: "recipes" }])
+    )(ReviewRecipeContent);

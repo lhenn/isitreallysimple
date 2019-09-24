@@ -19,12 +19,14 @@ class Recipes extends Component {
       [fieldType]: fieldValue
     });
   };
-
-  filterRecipes = recipes => {
+  filterByTitle = recipes => {
     if (this.state.title !== "") {
       let titleInput = new RegExp(this.state.title, "i");
       return recipes.filter(recipe => titleInput.test(recipe.title));
     }
+    return recipes;
+  }
+  sortRecipes = recipes => {
     if (this.state.sortBy === "tastiest") {
       return recipes.sort((a, b) => {
         return this.averageTasteRatings(b.reviews.map(r => parseInt(r.tasteRating))) -
@@ -33,14 +35,20 @@ class Recipes extends Component {
     }
     if (this.state.sortBy === "simplest") {
       return recipes.sort((a, b) => {
+        if (this.findProportionSimple(a) === this.findProportionSimple(b) ) {
+          return b.reviews.length - a.reviews.length
+        } 
+        return this.findProportionSimple(b) - this.findProportionSimple(a)
         
-        return (this.countSimpleRatings(b.reviews.map(r => r.simpleRating)).simple / (this.countSimpleRatings(b.reviews.map(r => r.simpleRating)).simple + this.countSimpleRatings(b.reviews.map(r => r.simpleRating)).notSimple)) -
-        (this.countSimpleRatings(a.reviews.map(r => r.simpleRating)).simple / (this.countSimpleRatings(a.reviews.map(r => r.simpleRating)).simple + this.countSimpleRatings(a.reviews.map(r => r.simpleRating)).notSimple))
       })
     }
 
     return recipes;
   };
+  findProportionSimple = (recipe) => {
+    return this.countSimpleRatings(recipe.reviews.map(r => r.simpleRating)).simple/ 
+      (this.countSimpleRatings(recipe.reviews.map(r => r.simpleRating)).simple + this.countSimpleRatings(recipe.reviews.map(r => r.simpleRating)).notSimple)
+  }
   averageTasteRatings = require("./RecipeData").averageTasteRatings;
   countSimpleRatings = require("./RecipeData").countSimpleRatings;
 
@@ -50,10 +58,10 @@ class Recipes extends Component {
 
     const recipeList = !isLoaded(this.props.recipes) ? (
       "Loading"
-    ) : isEmpty(this.filterRecipes(this.props.recipes)) ? (
+    ) : isEmpty(this.sortRecipes(this.filterByTitle(this.props.recipes))) ? (
       "No results found"
     ) : (
-      <RecipeList recipes={this.filterRecipes(this.props.recipes)} />
+      <RecipeList recipes={this.sortRecipes(this.filterByTitle(this.props.recipes))} />
     );
 
     return (

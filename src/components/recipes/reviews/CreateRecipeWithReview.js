@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { createRecipeWithReview } from "../../../store/actions/recipeActions";
 import { Redirect } from "react-router-dom";
 import CreateReviewFormGroups from './CreateReviewFormGroups'
+import { createRecipeWithReview } from "../../../store/actions/recipeActions";
 
 class CreateRecipeWithReview extends Component {
   state = {
@@ -37,16 +37,15 @@ class CreateRecipeWithReview extends Component {
     });
   };
   handleSubmit = e => {
+    console.log('submitting')
     e.preventDefault();
     this.props.onReviewSubmit(this.state);
   };
   render() {
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to="/login" />;
 
     const mealTypes = require("../RecipeData").mealTypes;
     const simpleCategories = require("../RecipeData").simpleCategories;
-    console.log("auth", auth);
+    console.log(this.props.title);
 
     return (
       <Container>
@@ -61,7 +60,7 @@ class CreateRecipeWithReview extends Component {
                 type="text"
                 name="title"
                 onChange={this.handleChange}
-                value={this.props.title}
+                defaultValue={this.props.title}
                 required
               ></Form.Control>
             </Form.Group>
@@ -93,19 +92,18 @@ class CreateRecipeWithReview extends Component {
               {simpleCategories.map(c => {
                 return (
                   <Form.Check
-                    key={c}
+                    key={c.name}
                     inline
-                    label={c}
+                    label={c.name}
                     type="checkbox"
                     name="simpleCategory"
-                    value={c}
+                    value={c.name}
                     onClick={this.handleCheckChange}
                   />
                 );
               })}
             </Col>
           </Form.Group>
-
           <Form.Row>
             <h5 as={Col}>Your Review</h5>
           </Form.Row>
