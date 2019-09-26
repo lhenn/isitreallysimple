@@ -6,7 +6,7 @@ import ReviewRecipeContent from './ReviewRecipeContent'
 
 const ReviewRecipe = () => {
     return (
-        <Container className="review-container">
+        <Container>
             <h2>Review a recipe</h2>
             <ReviewRecipeContent/>
         </Container>

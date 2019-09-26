@@ -2,7 +2,7 @@ import React from 'react'
 
 const Prompt = ({message}) => {
     return (
-        <div>{message}</div>
+        <div className="prompt">{message}</div>
     )
 }
 

@@ -40,7 +40,7 @@ const About = () => {
       <ul>
         {simpleCategories.map((cat, index) => {
           return (
-            <li key={index}>
+            <li key={index} id="category-list-item">
               <SimpleCategories categories={[cat.name]} />
               <p>{cat.description}</p>
             </li>

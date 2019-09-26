@@ -20,12 +20,12 @@ const RecipeFilter = ({ onChange }) => {
       <Form.Group as={Col} sm={8}>
         <SearchRecipeInput onChange={handleChange}/>
       </Form.Group>
-
-      <ToggleButtonGroup type="radio" name="sortBy" inline as={Col} sm={4}>
+      <Form.Group as={Col} sm={4}>
+      <ToggleButtonGroup type="radio" name="sortBy">
         <ToggleButton
           name="sortBy"
           className="filter-button"
-          variant="secondary"
+          variant="outline-dark"
           value="simplest"
           onChange={handleChange}
         >
@@ -34,13 +34,15 @@ const RecipeFilter = ({ onChange }) => {
         <ToggleButton
           name="sortBy"
           className="filter-button"
-          variant="secondary"
+          variant="outline-dark"
           value="tastiest"
           onChange={handleChange}
         >
           Tastiest
         </ToggleButton>
       </ToggleButtonGroup>
+      </Form.Group>
+      
     </Form>
   );
 };

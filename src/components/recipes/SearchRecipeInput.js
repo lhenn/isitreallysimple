@@ -1,7 +1,7 @@
 import React from 'react'
 import {FormControl} from 'react-bootstrap'
 
-const SearchRecipeInput = ({onChange}) => {
+const SearchRecipeInput = ({onChange, onFocus}) => {
     return (
         <FormControl
           inline
@@ -9,6 +9,7 @@ const SearchRecipeInput = ({onChange}) => {
           placeholder="Search..."
           name="title"
           onChange={onChange}
+          onFocus = {onFocus}
         />
     )
 }
