@@ -44,7 +44,17 @@ h1,h2,h3,h4,h5{
   margin: 5% 0;
 }
 
-
+@media only screen and (min-width: 768px){
+  h1,h2,h3,h4,h5{
+    color: green;
+  }
+  .recipe-summary-container{
+    .recipe-summary-info{
+      display:flex;
+      flex-direction:row;
+    }
+  }
+}
 
 // ---------------- navbar----------------
 .profile-container{
