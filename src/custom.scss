@@ -13,7 +13,7 @@ $link-color: black !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 15%) !default;
 //** Link hover decoration.
-$link-hover-decoration: underline !default;
+$link-hover-decoration: none !default;
 
 
 
@@ -40,21 +40,14 @@ h1,h2,h3,h4,h5{
   box-shadow: 4px 6px 14px -8px rgba(0,0,0,0.75);
 
 }
+
 .prompt{
   margin: 5% 0;
 }
 
-@media only screen and (min-width: 768px){
-  h1,h2,h3,h4,h5{
-    color: green;
-  }
-  .recipe-summary-container{
-    .recipe-summary-info{
-      display:flex;
-      flex-direction:row;
-    }
-  }
-}
+
+
+
 
 // ---------------- navbar----------------
 .profile-container{
@@ -87,23 +80,28 @@ h1,h2,h3,h4,h5{
 }
 // --- filter ----
 #filter-container{
-  width: 100%;
+  width: auto;
+  max-width:850px;
   display:flex;
   align-items: center;
   justify-content: space-between;
 
 }
 // --- review ----
+
+#review-recipe-button{
+  border-top-left-radius: 0px;
+}
 .review-details{
   margin: 2% 0;
   box-shadow: 4px 6px 14px -8px rgba(0,0,0,0.75);
   padding:10px;
   display:flex;
   flex-direction:column;
+
   .overview{
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
     margin-bottom:10px;
   }
   .author{
@@ -116,22 +114,27 @@ h1,h2,h3,h4,h5{
   .ratings{
     display:flex;
     flex-direction:row;
-    align-items: baseline;
+    margin: 0 20px;
+  
   }
   .simpleRating, .tasteRating{
-    margin:0 10px;
+    margin:10px 10px;
   }
-  .tasteRating{
-   
-  }
-  .comments{
-   
-  }
+ 
+}
+.review.rating-emoji{
+  display:flex;
+  justify-content: flex-start;
+  width: 120px;
+  height:40px;
+  white-space: nowrap;
+  margin:3px;
+  margin-right:10px;
+  
 }
 .review-container{
   display:flex;
   align-items: center;
-  
   flex-direction: column;
 }
 #continue-to-form{
@@ -146,27 +149,10 @@ h1,h2,h3,h4,h5{
 }
 // --- summary ----
 .summary-card{
-  width:auto;
+
   margin: 2% 0;
 }
-.simple-icon-background, .not-simple-icon-background{
-  
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height:40px;
-  padding: 5px;
-  border-radius:20px;
-  border:solid 2px grey;
-  margin:3px;
-}
-.simple-icon-background {
-  border-color:$simple;
-}
-.not-simple-icon-background {
-  border-color:$not-simple;
-}
+
 
 .recipe-summary-container {
   display:flex;
@@ -279,6 +265,67 @@ h1,h2,h3,h4,h5{
 .simple-rating {
   margin:2px;
   flex-wrap:nowrap;
+}
+
+// ************************** for anything larger than a phone:
+@media only screen and (min-width: 768px){
+
+  h4.simple-categories{
+    padding:0;
+  }
+  .card{
+    width:auto;
+    max-width:850px;
+
+  }
+  .card:hover{
+    box-shadow: 4px 6px 14px -8px rgba(0, 0, 0, 0.9);
+    .recipe-title{
+      text-decoration:underline;
+    }
+  }
+
+  .recipe-summary-container.summary{
+    display:flex;
+    justify-content: space-between;
+    text-decoration: none;
+
+
+    .recipe-summary-info, .recipe-summary-ratings{
+      display:flex;
+      flex-direction:row;
+      justify-content: flex-start;
+      align-items:space-around;
+      padding:0;
+      margin:0;
+      border:0;
+      width:auto;
+      flex-grow:0;
+    }
+    .simple-categories, .meal-type, .simple-rating, .taste-rating{
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .meal-type{
+      width:200px;
+    }
+    .simple-categories{
+      width:220px;
+    }
+    .simple-ratings-container{
+      width:150px;
+    }
+    .taste-rating{
+      width:50px;
+    }
+    
+    .rating-emoji{
+      font-size: 24px;
+    }
+  }
+
 }
 
 

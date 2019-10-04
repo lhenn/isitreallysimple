@@ -5,7 +5,7 @@ import SimpleCategories from './SimpleCategories'
 const RecipeInfo = ({recipe}) => {
  return(
     <div className='recipe-summary-info'>
-        <div>{recipe.mealType}</div>
+        <div className='meal-type'>{recipe.mealType}</div>
         <SimpleCategories categories={recipe.simpleCategories}/>
     </div>
  )

@@ -67,6 +67,7 @@ class Recipes extends Component {
     return (
       <Container lg={{ span: 6, offset: 6 }}>
         <h2>Browse Recipes</h2>
+       
         <RecipeFilter onChange={this.handleChange} />
         {recipeList}
       </Container>

@@ -11,15 +11,11 @@ const ReviewDetails = ({ review }) => {
     switch (rating) {
       case "simple":
         return (
-          <div className="simple-icon-background simpleRating">
-            <FontAwesomeIcon icon={faThumbsUp} />
-          </div>
+          <div className='rating-emoji review'> &#128578; simple</div>
         );
       case "not simple":
         return (
-          <div className="not-simple-icon-background simpleRating">
-            <FontAwesomeIcon icon={faThumbsDown} />
-          </div>
+          <div className='rating-emoji review'> &#128545; not simple</div>
         );
       default:
         return null;

@@ -23,7 +23,9 @@ const About = () => {
         simple. This platform has been built to judge if he has succeeded or not
         on a recipe by recipe basis. Collectively we are asking the question:
         <span className="italic"> really</span>??
-        <iframe
+      </p>
+
+      <iframe
           src="https://giphy.com/embed/QzSiPlYf3PYVa"
           width="100%"
           height="auto"
@@ -31,11 +33,11 @@ const About = () => {
           className="giphy-embed"
           allowFullScreen
         ></iframe>
-      </p>
+        
       <h3>Simple Criteria</h3>
       <p>
         If you are not familiar with the Ottolenghi's simple categories (which
-        he assigns to each recipe), I have outlined them below.
+        he assigns to each recipe), I list them below.
       </p>
       <ul>
         {simpleCategories.map((cat, index) => {
@@ -48,7 +50,7 @@ const About = () => {
         })}
       </ul>
       <p>
-        More information on each category is found in the book. We encourage you to keep Ottolenghi's criteria in mind while ranking the recipes.
+        More information on each category is found in the book. I hope you keep Ottolenghi's criteria in mind while ranking the recipes!
       </p>
     </Container>
   );

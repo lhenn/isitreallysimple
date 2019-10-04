@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import ReviewDetails from "./ReviewDetails"
-import { Container, Accordion, Card, Button, Form, Col, Row } from "react-bootstrap"
-import CreateReview from './reviews/CreateReview'
+import { Container, Row, Button} from "react-bootstrap"
+import {Link} from "react-router-dom"
 import RecipeInfo from './summary/RecipeInfo'
 import ReviewInfo from './summary/ReviewInfo'
-import SimpleRatings from './summary/SimpleRatings'
-import TasteRatings from './summary/TasteRatings'
 import ReviewModal from './reviews/ReviewModal'
 
 
@@ -19,16 +17,22 @@ const RecipeDetails = ({recipe, recipeID}) => {
       <Container>
 
         <h3 className="recipe-title details">{recipe.title}</h3>
-        <div className='recipe-summary-container details'>
+        <div as={Row} className='recipe-summary-container details'>
           <RecipeInfo recipe={recipe}/>
           <ReviewInfo recipe={recipe}/>
         </div>
 
+      <Row className="recipe-details-button-container">
+      <Button as={Link} variant="light" id="back-to-recipes-button" to='/'>Back to recipes</Button>
       <ReviewModal recipe={recipe} recipeID={recipeID}/>
-       
-        {recipe.reviews.map((review, index) => {
-          return <ReviewDetails key={index} review={review} />;
-        })}
+      </Row>
+     
+
+{recipe.reviews.map((review, index) => {
+  return <ReviewDetails key={index} review={review} />;
+})}
+
+      
       </Container>
     );
   } else {

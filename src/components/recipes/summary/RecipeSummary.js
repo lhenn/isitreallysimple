@@ -10,7 +10,7 @@ const RecipeSummary = ({recipe}) => {
     <Card className="summary-card">
       <Card.Body>
         <Card.Title className="recipe-title">{recipe.title}</Card.Title>
-        <div className='recipe-summary-container'>
+        <div className='recipe-summary-container summary'>
           <RecipeInfo recipe={recipe}/>
           <div className='recipe-summary-ratings'>
             <SimpleRatings simpleRatings={recipe.reviews ? recipe.reviews.map(r => r.simpleRating) : null}/>

@@ -8,8 +8,14 @@ const SimpleRatings = ({simpleRatings}) => {
 
   return(
     <div className='simple-ratings-container'>
-      <div className='simple-rating'><span>({simpleCount}) </span><FontAwesomeIcon icon={faThumbsUp} /></div>
-      <div className='simple-rating'><span>({notSimpleCount}) </span><FontAwesomeIcon icon={faThumbsDown} /></div>
+      <div className='simple-rating'>
+        <span className='rating-emoji'> &#128578;</span>
+        <span className='simple-rating-count'>({simpleCount}) </span>
+      </div>
+      <div className='simple-rating'>
+        <span className='rating-emoji'> &#128545;</span> 
+        <span className='simple-rating-count'>({notSimpleCount}) </span>
+      </div>
     </div>
   )
 
